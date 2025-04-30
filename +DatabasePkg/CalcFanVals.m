@@ -96,7 +96,7 @@ switch unitsflag
 
         if isnan(Plane.Specs.Aero.WingtipDevice)
             AReff = AR;
-        elseif Plane.Specs.Aero.WingtipDevice == "none"
+        elseif Plane.Specs.Aero.WingtipDevice == "No Wingtip Device"
             AReff = AR;
         else
             AReff = 1.2*AR;
