@@ -249,7 +249,6 @@ end
 %% Propulsion
 function [Propulsion] = FLOPS_Propulsion(Params)
 
-Engines =  UnitConversionPkg.ConvMass(Params(15),'kg','lbm');
 Neng = Params(3);
 Thrust_ea = UnitConversionPkg.ConvForce(Params(4),'N','lbf')...
     / Neng;
@@ -266,6 +265,8 @@ Starters = 11 * Neng * Vmax^0.32 * Neng ^ 1.8;
 Misc = Controls + Starters;
 
 FuelSystem = 1.07 * Fuel_Weight^0.58 * Neng * Vmax^0.34;
+
+Engines =  Thrust_ea / 5.5;
 
 Propulsion = Neng*Engines + ThrustReverser + Misc + FuelSystem;
 end
