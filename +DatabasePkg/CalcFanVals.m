@@ -348,6 +348,16 @@ switch unitsflag
         Plane.Specs.TLAR.ADGLimitor = ADGLimitor;
 
 
+        %% Burden Weight
+        Plane.Specs.Weight.Burden = Plane.Specs.Weight.Payload +...
+            Plane.Specs.Weight.Fuel + Plane.Specs.Propulsion.Engine.DryWeight*...
+            Plane.Specs.Propulsion.NumEngines;
+
+
+        Plane.Specs.Weight.Structure_Burden = (Plane.Specs.Weight.MTOW - Plane.Specs.Weight.Burden) ...
+            / Plane.Specs.Weight.Burden;
+
+
     case "Units"
         Plane.Specs.Performance.Range = "m";
         Plane.Specs.Aero.L_D.CrsBRE = "ratio";
@@ -391,6 +401,8 @@ switch unitsflag
         Plane.Specs.Weight.EG = "kg";
 
         Plane.Specs.Weight.Payload = "kg";
+        Plane.Specs.Weight.Burden = "kg";
+        Plane.Specs.Weight.Structure_Burden = "ratio";
 
         Plane.Specs.Power.SpecEnergy.Batt = "kWh/kg";
         Plane.Specs.Power.Eta.EM = "efficiency";
