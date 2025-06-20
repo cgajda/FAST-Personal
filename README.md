@@ -25,7 +25,7 @@ Additional Contributors:
 - Michael Tsai
 - Vaibhav Rau
 
-README last updated: 11 Nov 2024
+README last updated: 20 Jun 2025
 
 ## Learn More About FAST
 
@@ -34,6 +34,23 @@ For detailed information about FAST's features, visit our website: [IDEAS Lab We
 We also offer a series of tutorial videos on YouTube to help you get started with FAST and explore its capabilities. Check out our channel and subscribe for updates: [IDEAS Lab YouTube Channel](https://www.youtube.com/channel/UC5ntmOSA1_YWu1ljQ5hXn0Q).
 
 To stay informed about upcoming papers, new releases, and news about FAST, please sign up for [our newsletter here](https://forms.gle/b8sPXKnRAfi5ZsARA).
+
+## Please cite us when using FAST
+
+If you are using FAST in your work, please cite the following paper: [Mokotoff, P., Arnson, M., Wang, Y. C., & Cinar, G. (2025). FAST: A Future Aircraft Sizing Tool for Conventional and Electrified Aircraft Design. In AIAA SciTech 2025 Forum (p. 2374).](https://www.gokcincinar.com/publication/c-2025-scitech-pm/c-2025-SciTech-PM.pdf)
+
+Alternatively, you may use the information below when using BibTeX:
+
+```
+@inproceedings{mokotoff2025fast,
+  title={FAST: A Future Aircraft Sizing Tool for Conventional and Electrified Aircraft Design},
+  author={Mokotoff, Paul and Arnson, Maxfield and Wang, Yi-Chih and Cinar, Gokcin},
+  booktitle={AIAA SciTech 2025 Forum},
+  pages={2374},
+  year={2025},
+  doi={https://doi.org/10.2514/6.2025-2374}
+}
+```
 
 # (I) Installation Instructions
 
@@ -113,7 +130,7 @@ FAST performs on- and off-design analysis of a user-prescribed aircraft on a use
     - Select whether or not a geometry of the aircraft should be created. This is controlled by the variable: "Aircraft.Settings.VisualizeAircraft". The default is 0 (no geometry created).
     - Prescribe an aircraft architecture by either using a preset one (given in "CreatePropArch" within the "PropulsionPkg") or define their own. To learn more about how to define a propulsion architecture, the user should refer to the examples in "CreatePropArch" and the following paper:
 
-        > Cinar, G., Garcia, E., & Mavris, D. N. (2020). A framework for electrified propulsion architecture and operation analysis. Aircraft Engineering and Aerospace Technology, 92(5), 675-684.
+        > Mokotoff, P. and Cinar, G. (2025). Graph Theory-based propulsion system analysis. Aerospace Science and Technology (under review).
 
     It is acceptable if some information is unknown about the aircraft. The user can either set the value to `NaN` or omit it. During the analysis preprocessing, any unknown information about the aircraft will be estimated using historical regressions from a database of over 450 aircraft.
 
