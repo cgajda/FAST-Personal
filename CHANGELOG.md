@@ -1,6 +1,6 @@
 # **Changelog**
 
-Copyright 2024 The Regents of the University of Michigan, The Integrated Design of Environmentally-friendly Aircraft Systems Laboratory
+Copyright 2024 The Regents of the University of Michigan, The Integrated Design of Efficient Aerospace Systems Laboratory
 
 Written by the IDEAS Lab at the University of Michigan:
 <https://ideas.engin.umich.edu>
@@ -90,7 +90,8 @@ If you are using a turbofan aircraft, you must define the following constants in
     - ``Engine.Cffch``
     - ``Engine.HEcoeff``
 
-    The first four variables
+The first four variables are further described in [this paper](https://www.gokcincinar.com/publication/c-2025-scitech-pm/c-2025-SciTech-PM.pdf).
+The fifth variable is only necessary for hybrid electric configurations and is proportional to the ratio of thrust produced by a hybrid electric configuration relative to a conventional baseline aircraft.
 
 ### Fixed
 
