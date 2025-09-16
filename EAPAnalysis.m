@@ -173,6 +173,7 @@ if Type < 0
         Aircraft.Specs.Weight.Crew   +...
         Aircraft.Specs.Weight.Payload   +...
         Aircraft.Specs.Weight.Fuel   +...
+        Aircraft.Specs.Weight.EM   +...
         Aircraft.Specs.Weight.Batt;
 end
 
@@ -350,4 +351,25 @@ end
 
 % ----------------------------------------------------------
 
+%% Battery Degradation %%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% grounding time
+GroundTime = Aircraft.Specs.Battery.GroundT;
+
+% LIB chemistry material
+BattChem = Aircraft.Specs.Battery.Chem;
+
+% battery charging rate in [W]
+Cpower = Aircraft.Specs.Battery.Cpower;
+
+% FEC
+FECs = Aircraft.Specs.Battery.FEC(end);
+
+if Type ~= 1 % Battery degradation only makes sense in off-design 
+    if Aircraft.Settings.Degradation == 1
+        [SOH, FEC, Aircraft] = BatteryPkg.CyclAging(Aircraft, BattChem, FECs, GroundTime, Cpower);
+        Aircraft.Specs.Battery.FEC(end+1,1) = FEC;
+        Aircraft.Specs.Battery.SOH(end+1,1) = SOH;
+    end
 end
