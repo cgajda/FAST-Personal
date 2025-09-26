@@ -3,8 +3,9 @@ function [Voltage, Current, Pout, Capacity, SOC, C_rate] = Charging(Aircraft, Pr
 % [Voltage, Pout, Capacity, SOC] = Model(Preq, Time, SOCBeg, Parallel, Series)
 % originally written by Sasha Kryuchkov
 % overhauled by Paul Mokotoff, prmoko@umich.edu
-% last updated: 10 jul 2024
+% modified by Yipeng Liu, yipenglx@umich.edu
 %
+% last updated: 23 sep 2025
 % Model (dis)charging for a Lithium-ion battery.
 %
 % INPUTS:

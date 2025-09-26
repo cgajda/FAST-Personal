@@ -3,6 +3,7 @@ function [Aircraft] = ResizeBattery(Aircraft)
 % [Aircraft] = ResizeBattery(Aircraft)
 % originally written by Sasha Kryuchkov
 % overhauled by Paul Mokotoff, prmoko@umich.edu
+% modified by Yipeng Liu, yipenglx@umich.edu
 % last updated: 11 dec 2024
 %
 % After an aircraft flies a mission, update its battery size. If a "simple"
