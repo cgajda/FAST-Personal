@@ -532,7 +532,9 @@ if Settings.Analysis.Type > -2
     Weight.Crew = Weight.Payload/26.1; % from Martins' Metabook
 end
 
-%% Preset computationally expensive regression parameters
+%% Preset computationally expensive regression parameters (TF Only)
+
+if TLAR.Class == "Turbofan"
 
 % for the OEW iteration
 % list parts of the aircraft structure to use in the regression
@@ -553,7 +555,10 @@ Prior = RegressionPkg.PriorCalculation(DataEngine,IOspace);
 EngWeights = 1;
 [RegressionParams.WEngine.DataMatrix,    RegressionParams.WEngine.HyperParams,     RegressionParams.WEngine.InverseTerm] =...
     RegressionPkg.RegProcessing(DataEngine,IOspace,Prior, EngWeights);
-
+else
+    % Assign empty output if ~turbofan class
+    RegressionParams = struct();
+end
 %% Prepare Output Structure
 Propulsion.Engine = Engine;
 
