@@ -151,7 +151,7 @@ Aircraft.Specs.Power.SpecEnergy.Batt = 0.25;
 % downstream power splits
 Aircraft.Specs.Power.LamDwn.SLS = 0.1;
 Aircraft.Specs.Power.LamDwn.Tko = 0.1;
-Aircraft.Specs.Power.LamDwn.Clb = 0.01;
+Aircraft.Specs.Power.LamDwn.Clb = 0;
 Aircraft.Specs.Power.LamDwn.Crs = 0;
 Aircraft.Specs.Power.LamDwn.Des = 0;
 Aircraft.Specs.Power.LamDwn.Lnd = 0;
@@ -159,7 +159,7 @@ Aircraft.Specs.Power.LamDwn.Lnd = 0;
 % upstream power splits
 Aircraft.Specs.Power.LamUps.SLS = 1;
 Aircraft.Specs.Power.LamUps.Tko = 1;
-Aircraft.Specs.Power.LamUps.Clb = 1;
+Aircraft.Specs.Power.LamUps.Clb = 0;
 Aircraft.Specs.Power.LamUps.Crs = 0;
 Aircraft.Specs.Power.LamUps.Des = 0;
 Aircraft.Specs.Power.LamUps.Lnd = 0;

@@ -12,7 +12,21 @@ Principal Authors:
 - Paul Mokotoff, <prmoko@umich.edu>
 - Max Arnson, <marnson@umich.edu>
 
-Last Updated: 26 Nov 2025
+Last Updated: 12 Dec 2025
+
+## Version 0.3.1 - 12 Dec 2025
+
+### Added
+
+1. CostPkg with a battery replacement cost estimation model.
+
+2. Battery state of health model to capture long term effects.
+
+### Changed
+
+1. Reorganized battery (dis)charging model and broke into seperate files for readibility.
+
+2. Fixed C rate assumption error and batery resizing error. 
 
 ## Version 0.3.0 - 26 Nov 2025
 

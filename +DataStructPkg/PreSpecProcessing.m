@@ -423,10 +423,10 @@ else
             if ~isfield(Aircraft.Specs.Battery, "IntResist")
                 Aircraft.Specs.Battery.IntResist = NaN;
             end
-            if ~isfield(Aircraft.Specs.Battery, "expVol")
+            if ~isfield(Aircraft.Specs.Battery, "ExpVol")
                 Aircraft.Specs.Battery.ExpVol = NaN;
             end
-            if ~isfield(Aircraft.Specs.Battery, "expCap")
+            if ~isfield(Aircraft.Specs.Battery, "ExpCap")
                 Aircraft.Specs.Battery.ExpCap = NaN;
             end
             if ~isfield(Aircraft.Specs.Battery, "MinSOC")
@@ -470,7 +470,6 @@ if ~isfield(Aircraft,"Settings")
     Aircraft.Settings.DesPoints = NaN;
     Aircraft.Settings.OEW.MaxIter = NaN;
     Aircraft.Settings.Degradation = NaN;
-    Aircraft.Settings.Analysis.PowerOpt = NaN;
     Aircraft.Settings.OEW.Tol = NaN;
     Aircraft.Settings.Analysis.MaxIter = NaN;
     Aircraft.Settings.Analysis.Type = NaN;
@@ -507,16 +506,12 @@ else
     if ~isfield(Aircraft.Settings,"Analysis")
         Aircraft.Settings.Analysis.MaxIter = NaN;
         Aircraft.Settings.Analysis.Type = NaN;
-        Aircraft.Settings.Analysis.PowerOpt = NaN;
     else
         if ~isfield(Aircraft.Settings.Analysis,"MaxIter")
             Aircraft.Settings.Analysis.MaxIter = NaN;
         end
         if ~isfield(Aircraft.Settings.Analysis,"Type")
             Aircraft.Settings.Analysis.Type = NaN;
-        end
-          if ~isfield(Aircraft.Settings.Analysis,"PowerOpt")
-            Aircraft.Settings.Analysis.PowerOpt = NaN;
         end
     end
     if ~isfield(Aircraft.Settings,"Plotting")

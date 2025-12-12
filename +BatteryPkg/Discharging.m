@@ -43,8 +43,6 @@ function [Voltage, Current, Pout, Capacity, SOC, C_rate] = Discharging(Aircraft,
 %
 %     C_rate   - Rate of (dis)charge. 
 %                size/type/units: n-by-1 / double / [C]
-
-
 %% PROCESS INPUTS %%
 %%%%%%%%%%%%%%%%%%%%
 
@@ -146,8 +144,10 @@ for itime = 1:ntime
     
     % compute the initial discharged capacity
     DischargedCapacityStart = (1 - (SOC(itime) / 100)) .* Q;
-        
-    if (Preq >= 0)
+
+    isDischarge = (Preq(itime)>=0);
+
+    if (isDischarge)
         
         % compute the hot cell voltage
         VoltageCellHot = -(PolarizedVoTemp ./ (SOC(itime) / 100) + ResistanceTemp);
@@ -169,7 +169,7 @@ for itime = 1:ntime
     % find the root
     CurrBatt = roots(CurrBattPoly);
     
-    if (Preq >= 0)
+    if isDischarge
         
         % check if the current is less than 0
         CurrBatt(CurrBatt < 0) = NaN;
@@ -193,7 +193,7 @@ for itime = 1:ntime
     % check for any imaginary currents
     if (any(~isreal(CurrBatt)))
         
-        if (Preq >= 0)
+        if (isDischarge)
             
             % get the 2-norm (magnitude) of the complex current (initial guess)
             CurrBatt = norm(CurrBatt);

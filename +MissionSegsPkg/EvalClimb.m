@@ -278,9 +278,6 @@ while (iter < MaxIter)
     
     % get the power available
     Pav = Aircraft.Mission.History.SI.Power.TV(SegBeg:SegEnd);
-    
-    % for full throttle, recompute the operational power splits
-    Aircraft = PropulsionPkg.RecomputeSplits(Aircraft, SegBeg, SegEnd);
 
     % ------------------------------------------------------
 

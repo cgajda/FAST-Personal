@@ -140,6 +140,7 @@ For additional documentation, see package-specific README files. These READMEs w
 
 - **+AircraftSpecsPkg**: This package contains specific aircraft initialization files. The documentation will guide a user to create their own files for repeated studies.
 - **+BatteryPkg**: This package contains the battery model which is called during the mission analysis for fully or hybrid electric aircraft.
+- **+CostPkg**: This packages contains functions for estimating aircraft related costs.
 - **+DatabasePkg**: This package contains the IDEAS Lab historical database. It also contains functions which help convert the original database format (MS Excel sheet) into the FAST format (Matlab data structures).
 - **+DataStructPkg**: This package contains functions which process aircraft data structures when calling FAST.
 - **+EngineModelPkg**: This package contains the gas turbine engine models used while running FAST. It is one of the largest packages and inspecting additional documentation is recommended if a user has more questions regarding the gas turbine engine models.
@@ -243,6 +244,7 @@ Should additional support be needed (beyond reporting bugs or issues with the so
 3. During the mission evaluation, the thrust (for a turbojet or turbofan) or power (for a turboprop or piston aircraft) is lapsed by a power of the density ratio (density at altitude to density at sea level). For turbojets and turbofans, this exponent is set to 1. For turboprops or piston aircraft, this exponent is set to 0 (no lapse). Currently, the user is unable to specify the exponent. However, it can be modified inside the "EngineLapse" function, which is housed in the "PropulsionPkg" folder.
 4. The "OptimizationPkg" is currently deprecated and only runs on previous versions of FAST.
 5. Currently, we are in the process of switching to a new off-design engine model. As a result of that, some of the engines provided in the "+EngineModelPkg\+EngineSpecsPkg" are not fully up to date. The engines that currently work are the LEAP-1A26, CF34-8E5, and any turboprop engine. If you want to use a turbofan engine not listed above, please refer to "+EngineModelPkg\SimpleOffDesign" for the necessary coefficients that need to be provided to use the fuel flow equation. Additionally, due to this switch, please refrain from using the "+EngineModelPkg\TurbofanOffDesign" function or any functions that it calls within its routine.
+6. We are still expanding the battery state of health model so using degredation on analysis for battery may be inaccurate.
 
 # (IX) Testing FAST:
 

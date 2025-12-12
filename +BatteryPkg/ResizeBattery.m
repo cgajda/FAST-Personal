@@ -126,7 +126,17 @@ if (Aircraft.Settings.DetailedBatt == 1)
         
     % find the maximum SOC difference for resizing the battery
     DeltaSOC = max(MinSOC - SOC);
+
+    % compute how toadjust SOC
+    Sizeto = DeltaSOC/100;
+
+   % compute the total capacity of the existing battery pack
+    ExistBattCap = QMax * Npar;
     
+    % update number of cells in parallel (assume 1 cell per module, ./ Qmax is for aged cell capacity in EPASS, ./ 1 is for number of cells in parallel per module)
+    NparSOC = ceil(ceil((ExistBattCap + Sizeto .* QMax .* Npar) ./ QMax) ./ 1);
+    
+    %{
     % if a value is negative, min. SOC not surpassed - no SOC change needed
     DeltaSOC(DeltaSOC < 0) = 0;
     
@@ -147,7 +157,7 @@ if (Aircraft.Settings.DetailedBatt == 1)
     
     % update number of cells in parallel (assume 1 cell per module, ./ Qmax is for aged cell capacity in EPASS, ./ 1 is for number of cells in parallel per module)
     NparSOC = ceil(ceil((ExistBattCap + DeltaSOC .* QMax .* Npar) ./ QMax) ./ 1);
-    
+    %}
     % ------------------------------------------------------
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
