@@ -1,13 +1,13 @@
-function CyclAgingBaselines()
+function [] = TestCyclAgingBaselines()
 %
-% TestCyclAgingBaselines()
+% [] = TestCyclAgingBaselines()
 %
 % written by Yipeng Liu, yipenglx@umich.edu
 % last updated: 21 oct 2025
 %
-% This is a local function. Generating the baseline values for CyclAging 
-% regression tests based on your desired sample specs. 
-% Run once, then paste results into TestCyclAging.m. 
+% This is a local function. Generating the baseline values for CyclAging
+% regression tests based on your desired sample specs.
+% Run once, then paste results into TestCyclAging.m.
 %
 % ----------------------------------------------------------
 

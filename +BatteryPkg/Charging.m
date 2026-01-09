@@ -23,13 +23,16 @@ function [Voltage, Current, Pout, Capacity, SOC, C_rate] = Charging(Aircraft, Pr
 %                set this variable to 1.
 %                size/type/units: 1-by-1 / integer / []
 %
-%    Series    - number of cells connceted in series. for a single cell,
+%     Series   - number of cells connceted in series. for a single cell,
 %                set this variable to 1.
 %                size/type/units: 1-by-1 / integer / []
 %
 % OUTPUTS:
 %     Voltage  - battery voltage as a function of time.
 %                size/type/units: n-by-1 / double / [V]
+%
+%     Current  - battery current as a function of time.
+%                size/type/units: n-by-1 / double / [A]
 %
 %     Pout     - battery output power.
 %                size/type/units: n-by-1 / double / [W]
@@ -251,8 +254,6 @@ end
 
 % remove the first SOC value
 SOC(1) = [];
-
-
 
 % ----------------------------------------------------------
 

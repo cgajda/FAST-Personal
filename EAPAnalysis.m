@@ -2,7 +2,7 @@ function [Aircraft] = EAPAnalysis(Aircraft, Type, MaxIter)
 %
 % [Aircraft] = EAPAnalysis(Aircraft, Type, MaxIter)
 % written by Paul Mokotoff, prmoko@umich.edu
-% last updated: 11 dec 2024
+% last updated: 09 jan 2026
 %
 % For a given aircraft, either:
 %
@@ -379,4 +379,8 @@ if Type ~= 1 % Battery degradation only makes sense in off-design
         Aircraft.Specs.Battery.FEC(end+1,1) = FEC;
         Aircraft.Specs.Battery.SOH(end+1,1) = SOH;
     end
+end
+
+% ----------------------------------------------------------
+
 end

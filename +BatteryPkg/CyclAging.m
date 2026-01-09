@@ -10,34 +10,34 @@ function [SOH, FEC, Aircraft] = CyclAging(Aircraft, ChemType, CumulFECs, Chargin
 % Last updated by 21 oct 2025
 %
 % INPUTS:
-%     Aircraft   - aircraft structure with battery usage info to be analyzed.
-%                  size/type/units: 1-by-1 / struct / []
+%     Aircraft     - aircraft structure with battery usage info to be analyzed.
+%                    size/type/units: 1-by-1 / struct / []
 %
-%     ChemType   - battery chemistry component type from either "NMC" (1) or
-%                  "LFP" (2) LIB.
-%                  size/type/units: 1-by-1 / integer / []
+%     ChemType     - battery chemistry component type from either "NMC" (1) or
+%                    "LFP" (2) LIB.
+%                    size/type/units: 1-by-1 / integer / []
 %
-%     CumulFECs  - Full Equivalent Cycles (FEC) is how many complete
-%                  charge-discharge cycles the battery has undergone, even if
-%                  the actual usage consists of partial cycles.
-%                  size/type/units: 1-by-1 / integer / []
+%     CumulFECs    - Full Equivalent Cycles (FEC) is how many complete
+%                    charge-discharge cycles the battery has undergone, even if
+%                    the actual usage consists of partial cycles.
+%                    size/type/units: 1-by-1 / integer / []
 %
-%     GroundTime - available charging time on the ground.
-%                  size/type/units: 1-by-1 / double / [s]
+%     ChargingTime - available charging time on the ground.
+%                    size/type/units: 1-by-1 / double / [s]
 %
-%     ChrgRate   - airport charging rate.
-%                  size/type/units: 1-by-1 / double / [kW]
+%     ChrgRate     - airport charging rate.
+%                    size/type/units: 1-by-1 / double / [kW]
 %
 % OUTPUTS:
-%     SOH      - State of Health degraded in a Full Equivalent Cycle(FEC).
-%                size/type/units: 1-by-1 / double / [%]
+%     SOH        - State of Health degraded in a Full Equivalent Cycle(FEC).
+%                  size/type/units: 1-by-1 / double / [%]
 %
-%     FEC      - Full Equivalent Cycles (FEC) from this single cycle
-%                size/type/units: 1-by-1 / integer / []
+%     FEC        - Full Equivalent Cycles (FEC) from this single cycle
+%                  size/type/units: 1-by-1 / integer / []
 %
-%     Aircraft - updated aircraft structure, which fills the
-%                "Aircraft.Mission.History.SI" structure.
-%                size/type/units: 1-by-1 / struct / []
+%     Aircraft   - updated aircraft structure, which fills the
+%                  "Aircraft.Mission.History.SI" structure.
+%                  size/type/units: 1-by-1 / struct / []
 
 %% BASIC AGING MODEL INITIALIZATION %%
 

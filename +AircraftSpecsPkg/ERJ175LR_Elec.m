@@ -1,10 +1,10 @@
 function [Aircraft] = ERJ175LR_Elec()
 %
-% [Aircraft] = ERJ175LR()
+% [Aircraft] = ERJ175LR_Elec()
 % originally written for E175 by Nawa Khailany
 % modified to E175LR by Paul Mokotoff, prmoko@umich.edu
-% modified to E175LR_elec by Yipeng Liu, prmoko@umich.edu
-% last updated: 21 oct 2024
+% modified to E175LR_Elec by Yipeng Liu
+% last updated: 08 jan 2026
 % 
 % Create a baseline model of the ERJ 175, long-range (also known as
 % an ERJ 170-200) and electrified version. This version uses a parallel 
@@ -236,6 +236,7 @@ if Aircraft.Specs.Battery.Degradation == 1
     % battery operation temperature (for analysis only, will remove)
     Aircraft.Specs.Battery.OpTemp = 35; % [°C]
 end
+
 
 %% SETTINGS (LEAVE AS NaN FOR DEFAULTS) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

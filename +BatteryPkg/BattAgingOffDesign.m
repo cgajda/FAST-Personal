@@ -1,11 +1,10 @@
 function [SOHs, FECs, MeanSOC, C_rate, DisC_rate, DOD, CellCapa, MaxV, MinV, Lifespan] = ...
     BattAgingOffDesign(AircraftSpecs, MissionProfile, SOHStop, MaxCycles, Visualization)
 %
-% [SOHs, FECs, mSOC, c_rate, dc_rate, DOD, CellCapa, MaxV, MinV, Lifespan] =
+% [SOHs, FECs, MeanSOC, C_rate, DisC_rate, DOD, CellCapa, MaxV, MinV, Lifespan] = ...
 % BattAgingOffDesign(AircraftSpecs, MissionProfile, SOHStop, MaxCycles, Visualization)
-%
 % written by Yipeng Liu, yipenglx@umich.edu
-% last updated: 13 Jun 2025
+% last updated: 09 jan 2026
 %
 % A function used for battery SOH lifecycle analysis in Off-design only.
 %
@@ -31,13 +30,13 @@ function [SOHs, FECs, MeanSOC, C_rate, DisC_rate, DOD, CellCapa, MaxV, MinV, Lif
 %     FECs               - full equivalent cycles after each cycle.
 %                         size/type/units: n-by-1 / array / [–]
 %
-%     mSOC               - mean SOC [%] per cycle.
+%     MeanSOC            - mean SOC [%] per cycle.
 %                         size/type/units: n-by-1 / array / [%]
 %
-%     c_rate             - mean charge C-rate [C] per cycle.
+%     C_rate             - mean charge C-rate [C] per cycle.
 %                         size/type/units: n-by-1 / array / [C]
 %
-%     dc_rate            - mean discharge C-rate [C] per cycle.
+%     DisC_rate          - mean discharge C-rate [C] per cycle.
 %                         size/type/units: n-by-1 / array / [C]
 %
 %     DOD                - depth of discharge [%] per cycle.
@@ -98,31 +97,31 @@ MaxV      = [];
 MinV      = [];
 
 % First off-design run
-Off_SizedERJ = Main(SizedAircraft, MissionProfile);
-Off_SizedERJ = BatteryPkg.GroundCharge(Off_SizedERJ, Off_SizedERJ.Specs.Battery.ChrgTime, Off_SizedERJ.Specs.Battery.Charging);
+OffDesignAC = Main(SizedAircraft, MissionProfile);
+OffDesignAC = BatteryPkg.GroundCharge(OffDesignAC, OffDesignAC.Specs.Battery.ChrgTime, OffDesignAC.Specs.Battery.Charging);
 
 %% OFF-DESIGN CYCLE LOOP %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 for Cycle = 1:MaxCycles
     % Record metrics
-    SOHs(end+1,1)     = Off_SizedERJ.Specs.Battery.SOH(end);
-    FECs(end+1,1)     = Off_SizedERJ.Specs.Battery.FEC(end);
+    SOHs(end+1,1)     = OffDesignAC.Specs.Battery.SOH(end);
+    FECs(end+1,1)     = OffDesignAC.Specs.Battery.FEC(end);
 
-    SOCs = Off_SizedERJ.Mission.History.SI.Power.SOC(:,2);
+    SOCs = OffDesignAC.Mission.History.SI.Power.SOC(:,2);
     active_mSOC = SOCs([true; diff(SOCs)~=0]);  % remove repeats
     MeanSOC(end+1,1)    = mean(active_mSOC);
 
-    Off_SizedERJ     = BatteryPkg.GroundCharge(Off_SizedERJ, Off_SizedERJ.Specs.Battery.ChrgTime, Off_SizedERJ.Specs.Battery.Charging);
-    Cr = Off_SizedERJ.Mission.History.SI.Power.ChargedAC.C_rate;
+    OffDesignAC     = BatteryPkg.GroundCharge(OffDesignAC, OffDesignAC.Specs.Battery.ChrgTime, OffDesignAC.Specs.Battery.Charging);
+    Cr = OffDesignAC.Mission.History.SI.Power.ChargedAC.C_rate;
     C_rate(end+1,1)  = mean(Cr(Cr~=0));
 
-    DCr = Off_SizedERJ.Mission.History.SI.Power.C_rate;
+    DCr = OffDesignAC.Mission.History.SI.Power.C_rate;
     DisC_rate(end+1,1) = mean(DCr(DCr~=0));
 
     DOD(end+1,1)     = max(SOCs) - min(SOCs);
-    CellCapa(end+1,1)= max(Off_SizedERJ.Mission.History.SI.Power.Cap_cell(:,2));
-    MaxV(end+1,1)    = max(Off_SizedERJ.Mission.History.SI.Power.V_cell(:,2));
-    MinV(end+1,1)    = Off_SizedERJ.Mission.History.SI.Power.V_cell(end-1,2);
+    CellCapa(end+1,1)= max(OffDesignAC.Mission.History.SI.Power.Cap_cell(:,2));
+    MaxV(end+1,1)    = max(OffDesignAC.Mission.History.SI.Power.V_cell(:,2));
+    MinV(end+1,1)    = OffDesignAC.Mission.History.SI.Power.V_cell(end-1,2);
 
     % Check stopping condition
     if SOHs(end) <= SOHStop
@@ -130,7 +129,7 @@ for Cycle = 1:MaxCycles
     end
 
     % Next cycle
-    Off_SizedERJ = Main(Off_SizedERJ, MissionProfile);
+    OffDesignAC = Main(OffDesignAC, MissionProfile);
 end
 
 %% Battery Lifespan %%

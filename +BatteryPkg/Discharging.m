@@ -31,6 +31,9 @@ function [Voltage, Current, Pout, Capacity, SOC, C_rate] = Discharging(Aircraft,
 %     Voltage  - battery voltage as a function of time.
 %                size/type/units: n-by-1 / double / [V]
 %
+%     Current  - battery current as a function of time.
+%                size/type/units: n-by-1 / double / [A]
+%
 %     Pout     - battery output power.
 %                size/type/units: n-by-1 / double / [W]
 %
