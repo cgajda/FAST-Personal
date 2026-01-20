@@ -12,15 +12,15 @@ Principal Authors:
 - Paul Mokotoff, <prmoko@umich.edu>
 - Max Arnson, <marnson@umich.edu>
 
-Last Updated: 12 Dec 2025
+Last Updated: 20 Jan 2026
 
-## Version 0.4.0 - 12 Dec 2025
+## Version 0.4.0 - 20 Jan 2026
 
 ### Added
 
 1. CostPkg with a battery replacement cost estimation model.
 
-2. Battery state of health model to capture long term effects.
+2. Battery state of health model to capture long term effects of using a battery during flight operations.
 
 ### Changed
 
@@ -28,7 +28,7 @@ Last Updated: 12 Dec 2025
 
 ### Fixed
 
-1. Fixed C rate assumption error and batery resizing error. 
+1. Fixed C-rate assumption error and battery resizing error. 
 
 ## Version 0.3.0 - 26 Nov 2025
 
